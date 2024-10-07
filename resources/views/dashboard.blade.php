@@ -69,11 +69,28 @@
                                 <td class="border px-4 py-2">{{ $travel->user->name }}</td>
                                 <td class="border px-4 py-2">{{ $travel->travelMode->type }}</td>
                                 <td class="border px-4 py-2">{{ $travel->user->distance }} km</td>
-                                <td class="border px-4 py-2">
-                                    @php
-                                        echo $travel->travelMode->co2 * $travel->user->distance;
-                                    @endphp
-                                    g
+                                <td class="border px-4 py-2 flex justify-between items-center">
+                                    <div>
+                                        @php
+                                            $co2Value = $travel->travelMode->co2 * $travel->user->distance;
+                                            echo $co2Value;
+                                        @endphp
+                                        g
+                                    </div>
+
+                                    <div style="display: flex; gap: 5px;"> <!-- Use flexbox for colored balls -->
+                                        @if($co2Value < 1000)
+                                            <div style="width: 10px; height: 10px; background-color: green; border-radius: 5px;"></div>
+                                        @endif
+
+                                        @if($co2Value > 1000 && $co2Value < 5000)
+                                            <div style="width: 10px; height: 10px; background-color: orange; border-radius: 5px;"></div>
+                                        @endif
+
+                                        @if($co2Value > 5000 && $co2Value < 50000)
+                                            <div style="width: 10px; height: 10px; background-color: red; border-radius: 5px;"></div>
+                                        @endif
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
