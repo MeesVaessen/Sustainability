@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\dailyTravel;
 use App\Models\travelMode;
+use App\Models\User;
 use Illuminate\Http\Request; // Import the Request class
 class DailyTravelController extends Controller
 {
@@ -35,6 +36,25 @@ class DailyTravelController extends Controller
         $travels = $query->paginate(10); // 10 items per page
         // Execute the query and return the view with results
         return view('/dashboard', compact('travels', 'filter'));
+    }
+
+    public function store(Request $request) {
+
+        $userId = auth()->user()->id;
+
+        $attributes = $request->validate([
+            'distance' => ['required'],
+            'type' => ['required']
+        ]);
+
+        User::where('id', $userId)->update(['distance' => $attributes['distance']]);
+
+        dailyTravel::create([
+            'user_id' => $userId,
+            'travel_mode_id' => $attributes['type'],
+        ]);
+
+        return redirect('/');
     }
 
 }
