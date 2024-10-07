@@ -35,16 +35,16 @@
                     <!-- Filter buttons -->
                     <div class="mb-4">
                         <form action="{{ url()->current() }}" method="GET" class="flex space-x-4">
-                            <button type="submit" name="filter" value="today" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                            <button type="submit" name="filter" value="today" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-3">
                                 Today
                             </button>
-                            <button type="submit" name="filter" value="last_week" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                            <button type="submit" name="filter" value="last_week" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-3">
                                 Last Week
                             </button>
-                            <button type="submit" name="filter" value="last_month" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                            <button type="submit" name="filter" value="last_month" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-3">
                                 Last Month
                             </button>
-                            <button type="submit" name="filter" value="all" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                            <button type="submit" name="filter" value="all" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-3">
                                 All
                             </button>
                         </form>
