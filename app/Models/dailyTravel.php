@@ -12,7 +12,7 @@ class dailyTravel extends Model
 
     public function travelMode(): BelongsTo
     {
-        return $this->belongsTo(TravelMode::class);
+        return $this->belongsTo(travelMode::class);
     }
 
     public function user() : BelongsTo
