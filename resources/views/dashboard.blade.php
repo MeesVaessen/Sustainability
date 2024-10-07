@@ -11,6 +11,16 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    <x-input-bar />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
                     <!-- Flex container to align the button to the right -->
                     <div class="flex justify-between items-center mb-4">
                         <!-- Empty div for the left side alignment -->
@@ -18,6 +28,24 @@
                         <form action="{{ route('export.csv') }}" method="GET">
                             <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                                 Export CSV
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Filter buttons -->
+                    <div class="mb-4">
+                        <form action="{{ url()->current() }}" method="GET" class="flex space-x-4">
+                            <button type="submit" name="filter" value="today" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                                Today
+                            </button>
+                            <button type="submit" name="filter" value="last_week" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                                Last Week
+                            </button>
+                            <button type="submit" name="filter" value="last_month" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                                Last Month
+                            </button>
+                            <button type="submit" name="filter" value="all" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                                All
                             </button>
                         </form>
                     </div>
@@ -49,7 +77,6 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
