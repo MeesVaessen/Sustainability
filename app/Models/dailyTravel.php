@@ -10,6 +10,8 @@ class dailyTravel extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function travelMode(): BelongsTo
     {
         return $this->belongsTo(travelMode::class);
