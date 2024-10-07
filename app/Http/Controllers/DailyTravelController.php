@@ -33,11 +33,9 @@ class DailyTravelController extends Controller
                 // Handle unknown filter values (optional)
                 return response()->json(['error' => 'Invalid filter'], 400);
         }
-
+        $travels = $query->paginate(10); // 10 items per page
         // Execute the query and return the view with results
-        return view('/dashboard', [
-            'travels' => $query->get()
-        ]);
+        return view('/dashboard', compact('travels', 'filter'));
     }
 
     public function store(Request $request) {
