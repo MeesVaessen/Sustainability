@@ -77,6 +77,9 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-4">
+                        {{ $travels->appends(['filter' => $filter])->links() }}
+                    </div>
                 </div>
             </div>
         </div>
