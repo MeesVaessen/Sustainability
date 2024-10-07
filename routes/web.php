@@ -1,15 +1,13 @@
 <?php
 
-use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\DailyTravelController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/export/excel', [ExportController::class, 'exportExcel'])->middleware(['auth', 'verified']);
-Route::get('/export/csv', [ExportController::class, 'exportCsv'])->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
