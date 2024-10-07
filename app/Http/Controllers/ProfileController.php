@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,16 @@ class ProfileController extends Controller
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
+    }
+
+    public function store(Request $request) {
+        $attributes = $request->validate([
+            'distance' => ['required']
+        ]);
+
+        User::where('id', auth()->user()->id)->update(['distance' => $attributes['distance']]);
+
+        return redirect("/profile");
     }
 
     /**
