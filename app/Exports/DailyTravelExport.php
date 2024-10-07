@@ -1,20 +1,26 @@
 <?php
-
 namespace App\Exports;
 
-use App\Models\dailyTravel;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class DailyTravelExport implements FromCollection, WithHeadings
 {
+    protected $travels;
+
+    // Constructor to accept the filtered travels
+    public function __construct($travels)
+    {
+        $this->travels = $travels;
+    }
+
     /**
      * Retrieve the collection of data for export.
      */
     public function collection()
     {
-        // Return the data you want to export, adjust to your needs
-        return dailyTravel::with('user', 'travelMode')->get()->map(function ($travel) {
+        // Use the travels passed in the constructor
+        return $this->travels->map(function ($travel) {
             return [
                 'id' => $travel->id,
                 'user_name' => $travel->user->name,

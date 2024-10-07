@@ -23,14 +23,15 @@
                 <div class="p-6 text-gray-900">
                     <!-- Flex container to align the button to the right -->
                     <div class="flex justify-between items-center mb-4">
-                        <!-- Empty div for the left side alignment -->
                         <div></div>
-                        <form action="{{ route('export.csv') }}" method="GET">
+                        <form action="{{ route('export.csv') }}" method="GET" class="flex items-center">
+                            <input type="hidden" name="filter" value="{{ request()->input('filter', 'today') }}">
                             <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                                 Export CSV
                             </button>
                         </form>
                     </div>
+
 
                     <!-- Filter buttons -->
                     <div class="mb-4">
