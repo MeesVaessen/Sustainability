@@ -9,7 +9,7 @@ class DailyTravelController extends Controller
 {
     public function index() {
 
-        return view('/test', [
+        return view('/dashboard', [
             'travels' => dailyTravel::query()->with(['User', 'travelMode'])->where('date', today())->get()
         ]);
     }
